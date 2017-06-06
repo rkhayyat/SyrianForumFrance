@@ -5,10 +5,8 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { authProviders, appRoutes } from "./app.routes";
 import { AppComponent } from "./app.component";
 import { BackendService, FirebaseService, UtilsService, CafService, CardService, BruteService } from "./services";
-// import { CurrencyEuroPipe } from "./pipes";
 import { MainIhmModule } from "./main/main-ihm.module";
 import { AboutUsModule } from "./about-us/about-us.module";
-// import { LoginModule } from "./login/login.module";
 import { PhraseCategoryListModule } from "./learn-french/phrase-category-list/phrase-category-list.module";
 import { PhraseCardsModule } from "./learn-french/phrase-cards/phrase-cards.module";
 import { PhraseListDetailModule } from "./learn-french/phrase-list-detail/phrase-list-detail.module";
@@ -44,8 +42,6 @@ import {TNSFontIconModule, TNSFontIconService, TNSFontIconPipe, TNSFontIconPureP
     NativeScriptRouterModule.forRoot(appRoutes),
     MainIhmModule,
     AboutUsModule,
-    // LoginModule,
-    // FloatBtnModule,
     ListModule,
     CatListModule,
     ListDetailModule,
