@@ -1,0 +1,16 @@
+    <ActionBar title="إيد وحدة " android.icon="res://icon" android.iconVisibility="always" class="action-bar">
+    <ActionItem (tap)="followUs()">
+            <Button class="btn btn-active font-awesome" text="&#xf09a; تابعنا" ></Button>
+      </ActionItem>
+    </ActionBar>
+        <StackLayout>
+                <Label class="gold card" textWrap="true" [text]="message$ | async"></Label>
+            <ScrollView>
+                <StackLayout >
+                            <Button text="الأرشيف  &#xe920;"  (tap)="goToArchive()" class="btn btn-primary  main-btn font-icomoon"></Button>
+                            <Button text="حسابات مالية &#xf0d6;"   (tap)="gotToConversion()" class="btn btn-primary main-btn main-btn-violet font-awesome"></Button>
+                            <Button text="&#xf0e6; مفردات شائعه 🆕"   (tap)="gotToFrench()" class="btn btn-primary main-btn main-btn-yellow font-awesome"></Button>
+                            <Button text="من نحن   &#xf05a;"  (tap)="goToAboutUs()" class="btn btn-primary main-btn  main-btn-orange font-awesome"></Button>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>

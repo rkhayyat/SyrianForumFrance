@@ -1,0 +1,99 @@
+<ActionBar title="Brute ↔️ Net" icon="" class="action-bar">
+<NavigationButton text="عودة" android.systemIcon="ic_menu_back" (tap)="back()"></NavigationButton>
+     <ActionItem (tap)="goHome()"
+            ios.systemIcon="9" ios.position="left"
+            android.systemIcon="ic_menu_home" android.position="actionBar">
+      </ActionItem>
+</ActionBar>
+<AbsoluteLayout>
+    <ScrollView class="sv">
+            <StackLayout>
+                <StackLayout class="card" >
+                    <GridLayout rows="auto" columns="1*,5*" >
+                        <Label text="ساعات العمل الأسبوعية" row="0" col="1" class="h2 " horizontalAlignment="center"></Label>
+                        <TextField  keyboardType="number" 
+                                    [(ngModel)]='model.weekHours' 
+                                    row="0" col="0" 
+                                    class="text-input" 
+                                    returnKeyType="done"                                  
+                                    android:gravity="center"
+                                    (returnPress)="calculate(model.hourBrute,0,0,0,0,0)" 
+                                    >
+                        </TextField>
+                    </GridLayout>
+                    <GridLayout rows="auto" columns="*,*,*" margin="5" marginTop="10">
+                        <Label text="الراتب" row="0" col="2" class="h2 " horizontalAlignment="center"></Label>
+                        <Label text="Brute" row="0" col="1" class="h2 " horizontalAlignment="center"></Label>
+                        <Label text="Net" row="0" col="0" class="h2 " horizontalAlignment="center"></Label>
+                    </GridLayout>
+                    <GridLayout rows="auto" columns="*,*,*" margin="5" marginTop="10">
+                        <Label text="بالساعة" row="0" col="2" class="h2 " horizontalAlignment="center"></Label>
+                        <TextField  keyboardType="number" 
+                                    [(ngModel)]='model.hourBrute' 
+                                    row="0" col="1" 
+                                    class="text-input" 
+                                    returnKeyType="done" 
+                                    (returnPress)="calculate(model.hourBrute,0,0,0,0,0)">
+                        </TextField>
+                        <TextField  keyboardType="number" 
+                                    [(ngModel)]='model.hourNet'  
+                                    row="0" col="0" 
+                                    class="text-input" 
+                                    returnKeyType="done" 
+                                    (returnPress)="calculate(0,model.hourNet,0,0,0,0)">
+                        </TextField>
+                    </GridLayout>
+                    <GridLayout rows="auto" columns="*,*,*" margin="5" marginTop="10">
+                        <Label text="بالشهر" row="0" col="2" class="h2 " horizontalAlignment="center"></Label>
+                        <TextField  keyboardType="number" 
+                                    [(ngModel)]='model.monthBrute'
+                                    row="0" col="1" 
+                                    class="text-input" 
+                                    returnKeyType="done" 
+                                    (returnPress)="calculate(0,0,model.monthBrute,0,0,0)">
+                        </TextField>
+                        <TextField  keyboardType="number" 
+                                    [(ngModel)]='model.monthNet'  
+                                    row="0" col="0" 
+                                    class="text-input" 
+                                    returnKeyType="done" 
+                                    (returnPress)="calculate(0,0,0,model.monthNet,0,0)">
+                        </TextField>
+                        
+                    </GridLayout>
+                    <GridLayout rows="auto" columns="*,*,*" margin="5" marginTop="10">
+                        <Label text="بالسنة" row="0" col="2" class="h2 " horizontalAlignment="center"></Label>
+                        <TextField  keyboardType="number" 
+                                    [(ngModel)]='model.yearBrute'  
+                                    row="0" col="1" 
+                                    class="text-input" 
+                                    returnKeyType="done" 
+                                    (returnPress)="calculate(0,0,0,0,model.yearBrute,0)">
+                        </TextField>
+                        <TextField  keyboardType="number" 
+                                    [(ngModel)]='model.yearNet'  
+                                    row="0" col="0" 
+                                    class="text-input" 
+                                    returnKeyType="done" 
+                                    (returnPress)="calculate(0,0,0,0,0,model.yearNet)">
+                        </TextField>
+                    </GridLayout>
+                    <GridLayout rows="auto" columns="*" >
+                        <button class="btn btn-primary" text="SMIC الراتب بالـ" (tap)="calculateWithSMIC()"></button>
+                        <!--<Label text="SMIC" row="0" col="1" class="h2 " horizontalAlignment="center"></Label>-->
+                         
+                        <!--<ListPicker #picker
+                                   row="0" col="0"  
+                                   [items]="smicList" 
+                                   [selectedIndex]="0"
+                                   (selectedIndexChange)="selectedIndexChanged(picker)">
+                        </ListPicker>-->
+                    </GridLayout>
+                </StackLayout>            
+        </StackLayout>
+    </ScrollView>
+            
+            <!--<StackLayout class="float-btn-container">
+                <float-btn (tap)="calcRsa()" text="&#xf1ec;"></float-btn>
+            </StackLayout>-->
+</AbsoluteLayout>

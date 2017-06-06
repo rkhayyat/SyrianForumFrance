@@ -1,0 +1,44 @@
+    <ActionBar title={{categoryTitle}} icon="" class="action-bar">
+        <NavigationButton text="عودة" android.systemIcon="ic_menu_back" (tap)="back()"></NavigationButton>
+       <ActionItem (tap)="goHome()"
+            ios.systemIcon="9" ios.position="left"
+            android.systemIcon="ic_menu_home" android.position="actionBar">
+      </ActionItem>
+    </ActionBar>
+    <StackLayout>
+    <Label class="h2 header" [text]="'عدد المقالات المتوفرة: '+(articles$ | async)?.length"   ></Label>
+    <ListView [items]="articles$ | async">
+            <ng-template let-item="item">                  
+                <GridLayout  columns="*">
+
+                    <GridLayout columns="auto,*,auto" rows="*,*" col="0" class="card">
+                        <Image class="m-5"   (tap)="viewDetail(item.id, categoryTitle)"  
+                                             horizontalAlignment="left" 
+                                             rowSpan="2" 
+                                             row="0" 
+                                             col="0" 
+                                              width="100" height="100"  
+                                             [src]="item.imagepath.length>0 ? item.imagepath : '~/assets/camera.png'">
+                        </Image>
+                        <Label class="m-5 h3"  
+                                [ngClass]="{newDate : isNewDate(item.date*-1)}"  
+                                class="oldDate" 
+                                textWrap="true" (tap)="viewDetail(item.id, categoryTitle)" 
+                                col="1" row="0" 
+                                [text]='isNewDate(item.date*-1)?item.title + "🆕":item.title'></Label>
+                        <Label class="m-10 font-awesome"   style="color:black;" col="2"  row="0" text='&#xf15c;'></Label>
+                        <Label class="m-10 font-awesome h5" col="1"  horizontalAlignment="right" colSpan="2" row="1" [text]='(item.date*-1) | date:"longDate"'></Label>
+
+                    </GridLayout>                 
+                </GridLayout>
+            </ng-template>
+    </ListView>
+    <StackLayout class="dimmer" visibility="{{isLoading ? 'visible' : 'collapsed'}}">
+               <GridLayout rows="*" visibility="{{isLoading ? 'visible' : 'collapsed'}}">
+                       <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="1" horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>    
+               </GridLayout>
+    </StackLayout>
+
+
+   
+

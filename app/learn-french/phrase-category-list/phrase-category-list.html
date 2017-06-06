@@ -1,0 +1,25 @@
+<ActionBar title="قوائم المجموعات" icon="" class="action-bar">
+    <NavigationButton text="عودة" android.systemIcon="ic_menu_back" (tap)="back()"></NavigationButton>
+</ActionBar>
+<StackLayout>
+      <ListView [items]="phraseCat$ | async"  >
+
+            <ng-template let-item="item" let-i="index" >                  
+                <GridLayout columns="*">
+                     <Button col="0" 
+                            [text]='item.title'  
+                            (tap)="goToFlashCards(item.id, item.title)" 
+                            class="btn btn-primary phrases-btn btn-french"></Button>
+                     
+                  </GridLayout>
+              </ng-template>
+      </ListView>
+    <StackLayout>
+
+   <StackLayout class="dimmer" visibility="{{isLoading2 ? 'visible' : 'collapsed'}}">
+        <GridLayout rows="*" visibility="{{isLoading2 ? 'visible' : 'collapsed'}}">
+               <ActivityIndicator [busy]="isLoading2" [visibility]="isLoading2 ? 'visible' : 'collapse'" row="1" horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>    
+        </GridLayout>
+   </StackLayout>
+   
+    

@@ -1,0 +1,6 @@
+**/app/App_Resources/Android/google-services.json
+**/app/**/*.js
+**/app/**/*.map
+/node_modules
+/platforms
+/hooks

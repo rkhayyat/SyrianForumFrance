@@ -1,0 +1,23 @@
+<ActionBar class="action-bar" title="{{categoryTitle}}">
+     <NavigationButton text="عودة" android.systemIcon="ic_menu_back" (tap)="back()"></NavigationButton>
+     <ActionItem (tap)="shareText()"
+            ios.systemIcon="9" ios.position="left"
+            android.systemIcon="ic_menu_share" android.position="actionBar">
+      </ActionItem>
+     <ActionItem (tap)="goHome()"
+            ios.systemIcon="9" ios.position="left"
+            android.systemIcon="ic_menu_home" android.position="actionBar">
+      </ActionItem>
+</ActionBar>
+    <ScrollView>
+        <StackLayout #myArticle class="card form">  
+            <Label class="h3 detail-title"  textWrap="true" [text]="title"></Label> 
+            <Image *ngIf="imagepath" width="100%"  [src]="imagepath" class="image-article"></Image>  
+            <HtmlView [html]="textHtml" ></HtmlView>
+        </StackLayout>
+    </ScrollView>
+    <StackLayout class="dimmer" visibility="{{isLoading ? 'visible' : 'collapsed'}}">
+       <GridLayout rows="*" visibility="{{isLoading ? 'visible' : 'collapsed'}}">
+            <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="1" horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>    
+       </GridLayout>
+     </StackLayout>

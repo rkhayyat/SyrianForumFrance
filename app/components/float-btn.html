@@ -1,0 +1,7 @@
+<GridLayout class="float-btn-wrapper">
+    <StackLayout class="float-btn-shadow" (loaded)="onLoaded($event)">
+        <StackLayout class="float-btn" (tap)="onTap($event)" (touch)="onTouch($event)">
+            <Label class="float-btn-text font-awesome" [text]="text"></Label>
+        </StackLayout>
+    </StackLayout>
+</GridLayout>

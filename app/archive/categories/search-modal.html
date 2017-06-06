@@ -1,0 +1,18 @@
+<GridLayout backgroundColor="white">
+                <!--<ListPicker #picker class="p-15"
+                            [items]="categoryList"
+                            [selectedIndex]="selectedIndex" 
+                            (selectedIndexChange)="selectedIndexChanged(picker)">
+                </ListPicker>-->
+<StackLayout>
+        <Label class="h2 "  text="أختر القسم الذي تريد البحث فيه:" ></Label> 
+       <ListView [items]="categoryList"  class="card-category-modal list-group" >
+            <ng-template let-item="item">
+                <StackLayout class="list-group-item" (tap)="close(item)">
+                        <Label [text]="item.title"></Label>
+                </StackLayout>
+            </ng-template>
+        </ListView>
+</StackLayout>
+</GridLayout>
+

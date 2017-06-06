@@ -1,0 +1,63 @@
+<ActionBar title="الأرشيف" icon="" class="action-bar">
+    <NavigationButton text="عودة" android.systemIcon="ic_menu_back" (tap)="back()"></NavigationButton>
+</ActionBar>
+<!--<TabView tabsBackgroundColor="#31bcff" #element [(ngModel)]="selectedIndex" class="font-awesome tab-view-font">-->
+<TabView tabsBackgroundColor="lightgray" #element [(ngModel)]="selectedIndex" class="font-awesome tab-view-font">
+    <ng-template tabItem title="بحث &#xf002;">
+              <StackLayout >
+                <StackLayout class="card" height="130">
+                    <GridLayout class="form">
+                        <StackLayout class="input-field">
+                            <SearchBar  #sb hint="أدخل كلمة بحث" 
+                                        [(ngModel)]="searchWord" 
+                                        [text]="searchPhrase" 
+                                        (submit)="onSubmit(sb.text)" 
+                                        (clear)="onSubmit('')">
+                            </SearchBar>
+                            <Button [text]="searchButtonLabel" class="btn btn-primary font-awesome" (tap)="showModal()"></Button>
+                        </StackLayout>
+                    </GridLayout>
+                </StackLayout>
+                <Label class="h3 header" [text]="'عدد المقالات المتوفرة نتيجة البحث: '+(articles$ | async)?.length"   ></Label>
+            <ListView [items]="articles$ | async"  >
+                        <ng-template let-item="item">                  
+                            <GridLayout>
+                                    <GridLayout columns="auto,*,auto" class="card">
+                                        <Image class="m-5" horizontalAlignment="left" col="0" width="40" height="40" [src]="item.imagepath.length>0 ? item.imagepath : '~/assets/camera.png'"></Image>
+                                        <Label class="m-5"  (tap)="viewDetail(item.id, searchWord)" col="1" [text]='item.title'></Label>
+                                        <Image class="m-5" col="2" horizontalAlignment="right" width="25" height="25"  [src]="'~/assets/article-icon.png'"></Image>
+                                    </GridLayout>                 
+                            </GridLayout>
+                        </ng-template>
+                </ListView>
+            </StackLayout>
+            <StackLayout class="dimmer" visibility="{{isLoading2 ? 'visible' : 'collapsed'}}">
+                    <GridLayout rows="*" visibility="{{isLoading2 ? 'visible' : 'collapsed'}}">
+                            <ActivityIndicator [busy]="isLoading2" [visibility]="isLoading2 ? 'visible' : 'collapse'" row="1" horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>    
+                    </GridLayout>
+                </StackLayout>
+    </ng-template>
+    <StackLayout *tabItem="{title:'&#xf02d;  تصفح الأرشيف' }">
+        <ScrollView >
+                <StackLayout>
+                    <StackLayout  class="card-category1">
+                        <StackLayout *ngFor="let item of category$ | async" class="card-category">
+                            <GridLayout columns="*" >
+                                <Button [text]="item.title" 
+                                        class="btn btn-primary btn-rounded-sm h3" 
+                                        height="80" 
+                                        style="color:white" 
+                                        (tap)="viewArticleList(item.id,item.title)">
+                                </Button>
+                            </GridLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+        </ScrollView>
+        <StackLayout class="dimmer" visibility="{{isLoading ? 'visible' : 'collapsed'}}">
+               <GridLayout rows="*" visibility="{{isLoading ? 'visible' : 'collapsed'}}">
+                       <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="1" horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>    
+               </GridLayout>
+        </StackLayout>
+    </StackLayout>
+</TabView>

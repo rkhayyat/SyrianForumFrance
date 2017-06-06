@@ -1,0 +1,27 @@
+<ActionBar [title]="groupTitle" icon="" class="action-bar">
+        <NavigationButton text="عودة" android.systemIcon="ic_menu_back" (tap)="back()"></NavigationButton>
+        <ActionItem (tap)="goHome()"
+            ios.systemIcon="9" ios.position="left"
+            android.systemIcon="ic_menu_home" android.position="actionBar">
+        </ActionItem>
+</ActionBar>
+<StackLayout>
+    <AbsoluteLayout horizontalAlignment="center" paddingTop="30" #absolutelayout>
+        <GridLayout width="100%" style="z-index:1" columns="*,*" horizontalAlignment="center">
+            <!--<Label #no col="0" verticalAlignment="center" text="no, thanks!" class="no"></Label>
+            <Label #yes col="1" text="yes, please!" class="yes"></Label>-->
+        </GridLayout>
+    </AbsoluteLayout>
+    <StackLayout>
+        <Label  class="gold card font-awesome" textWrap="true" [text]="textSpeech"></Label>
+        <!--<Label *ngIf="textSpeech!=='' && isCorrect" class="gold card h2 font-awesome"  horizontalAlignment="center" text="أحسنت &#xf164;"></Label>
+        <Label *ngIf="textSpeech!=='' && !isCorrect" class="gold card h2 font-awesome"  horizontalAlignment="center" text="حاول من جديد &#xf165;"></Label>-->
+        <GridLayout columns="auto,auto,auto" horizontalAlignment="center" paddingBottom="10">
+            <Button #swipeleft class="btnFr fa font-awesome btn-active" col="0" [text]="'&#xf2a2;'" (tap)="readText()" ></Button>
+            <Button class="btnsmFr fa-small font-awesome" col="1" [text]="'&#xf192;' "></Button>
+            <Button #swiperight class="btnFr fa font-awesome btn-active" col="2" [text]="'&#xf130;'" (tap)="writeText()"></Button>
+        </GridLayout>
+    </StackLayout>
+</StackLayout>
+   
+

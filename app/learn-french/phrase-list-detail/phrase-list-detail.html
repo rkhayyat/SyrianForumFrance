@@ -1,0 +1,33 @@
+<ActionBar class="action-bar" title="استمع وكرّر">
+     <NavigationButton text="عودة" android.systemIcon="ic_menu_back" (tap)="back()"></NavigationButton>
+     <!--<ActionItem (tap)="shareText()"
+            ios.systemIcon="9" ios.position="left"
+            android.systemIcon="ic_menu_share" android.position="actionBar">
+      </ActionItem>-->
+     <ActionItem (tap)="goHome()"
+            ios.systemIcon="9" ios.position="left"
+            android.systemIcon="ic_menu_home" android.position="actionBar">
+      </ActionItem>
+</ActionBar>
+    <ScrollView>
+         <StackLayout>  
+                <StackLayout class="card form">  
+                    <Label class="h3 detail-title"  textWrap="true" [text]="itemAr"></Label>
+                </StackLayout>
+                <StackLayout class="card form">  
+                    <Label class="h3 detail-title"  textWrap="true" [text]="itemFr"></Label> 
+                </StackLayout>
+                <Button text="استمع &#xf2a2;"  class="btn btn-primary main-btn main-btn-yellow font-awesome" (tap)="readText(itemFr)"></Button>
+                <Button text="تكلم &#xf130;"  class="btn btn-primary main-btn main-btn-red font-awesome" (tap)="writeText()"></Button>
+                <Label *ngIf="textSpeech!==''" class="gold card" textWrap="true" [text]="textSpeech"></Label>
+                <!--<Label class="gold card h2" horizontalAlignment="center" [text]="resultSpeech"></Label>-->
+                <Label *ngIf="textSpeech!=='' && isCorrect" class="gold card h2 font-awesome"  horizontalAlignment="center" text="أحسنت &#xf164;"></Label>
+                <Label *ngIf="textSpeech!=='' && !isCorrect" class="gold card h2 font-awesome"  horizontalAlignment="center" text="حاول من جديد &#xf165;"></Label>
+                <!--<Button text="توقف &#xf131;"  class="btn btn-primary main-btn main-btn-red font-awesome" (tap)="stopListening()"></Button>-->
+         </StackLayout>
+    </ScrollView>
+    <!--<StackLayout class="dimmer" visibility="{{isLoading ? 'visible' : 'collapsed'}}">
+       <GridLayout rows="*" visibility="{{isLoading ? 'visible' : 'collapsed'}}">
+            <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="1" horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>    
+       </GridLayout>
+     </StackLayout>-->

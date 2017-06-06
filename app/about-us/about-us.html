@@ -1,0 +1,29 @@
+    <ActionBar title="من نحن" android.icon="res://icon" class="action-bar">
+        <NavigationButton text="عودة" android.systemIcon="ic_menu_back" (tap)="back()"></NavigationButton>   
+        <ActionItem (tap)="followUs()">
+            <Button class="btn btn-active font-awesome" text="&#xf09a; تابعنا" ></Button>
+      </ActionItem>   
+    </ActionBar>
+<TabView tabsBackgroundColor="lightgray" #element [(ngModel)]="selectedIndex" class="font-awesome tab-view-font">
+    <ng-template tabItem title="&#xf162; رقم النسخة">
+        <StackLayout>
+              <StackLayout class="card">
+                      <StackLayout >
+                             <HtmlView [html]="textHtml2" ></HtmlView>
+                             <StackLayout class="hr-dark" ></StackLayout>
+                      </StackLayout>
+              </StackLayout>
+         </StackLayout>
+    </ng-template>
+    <StackLayout *tabItem="{title: '&#xf129; من نحن'}">
+              <ScrollView>
+                    <StackLayout>
+                        <StackLayout class="card">
+                            <StackLayout >
+                                    <HtmlView [html]="textHtml1" ></HtmlView>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+              </ScrollView>        
+    </StackLayout>
+</TabView>

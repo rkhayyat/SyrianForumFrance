@@ -1,0 +1,134 @@
+<ActionBar title="معلومات مالية" icon="" class="action-bar">
+<NavigationButton text="عودة" android.systemIcon="ic_menu_back" (tap)="back()"></NavigationButton>
+<ActionItem (tap)="goHome()"
+            ios.systemIcon="9" ios.position="left"
+            android.systemIcon="ic_menu_home" android.position="actionBar">
+</ActionItem>
+</ActionBar>
+
+<TabView tabsBackgroundColor="lightgray" #element [(ngModel)]="selectedIndex" class="font-icomoon tab-view-font">
+    <ng-template tabItem title="&#xe940;  rSa حساب">
+        <AbsoluteLayout>
+            <ScrollView class="sv">
+                <StackLayout class="card"  *ngFor="let item of caf$ | async | slice:0:1">
+                    <GridLayout rows="auto" columns="*,*" margin="10" marginTop="10" horizontalAlignment="center">
+                        <Label text="متزوج"  col="1" class="h3 font-icomoon" ></Label>
+                        <Switch [checked]="isMarried" [(ngModel)]="isMarried" col="0"></Switch>
+                    </GridLayout>
+
+                    <StackLayout class="hr-light" ></StackLayout>
+                    <StackLayout class="hr-light" ></StackLayout>
+                    <GridLayout rows="auto" columns="*,auto" margin="10" marginTop="10" horizontalAlignment="center">
+                        <Label text="مستفيد من مساعدة السكن"  col="1" class="h3 font-icomoon" ></Label>
+                        <Switch [checked]="isHouse" [(ngModel)]="isHouse" col="0"></Switch>
+                    </GridLayout>
+                    <StackLayout class="hr-light" ></StackLayout>
+                    <StackLayout class="hr-light" ></StackLayout>
+                    <StackLayout  margin="10" marginTop="10" horizontalAlignment="center" verticalAlignment="middle">
+                        <Label text="عدد الأولاد"  class="h3 font-icomoon" ></Label>
+                        <ListPicker #picker  
+                                   [items]="ageList" 
+                                   [selectedIndex]="0"
+                                   (selectedIndexChange)="selectedIndexChanged(picker)">
+                        </ListPicker>
+                    </StackLayout>
+                    <StackLayout class="hr-dark" ></StackLayout>
+                    <StackLayout class="hr-dark" ></StackLayout>
+                    <GridLayout rows="auto" columns="*" margin="10" marginTop="10" horizontalAlignment="center">
+                        <!--<Button text="حساب" col="1" class="btn btn-primary font-awesome" (tap)="calcRsa()"></Button>-->
+                        <Label text="{{rsaValue | currencyEuro }}"   textWrap="true" class="h2" ></Label>
+                    </GridLayout>
+                    </StackLayout>
+            </ScrollView>
+            <StackLayout class="float-btn-container">
+                <float-btn (tap)="calcRsa()" text="&#xf1ec;"></float-btn>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ng-template>
+
+    <StackLayout *tabItem="{title: '&#xe93c; rSa'}" >
+    <ScrollView>
+    <StackLayout class="card"  *ngFor="let item of caf$ | async | slice:0:1">
+    <GridLayout rows="auto" columns="*" margin="0" marginTop="0">
+        <Label text="{{item.dateValid}}" row="0" col="0" class="h3 font-icomoon" horizontalAlignment="center"></Label>
+    </GridLayout>
+    <GridLayout rows="auto" columns="*,*" margin="0" marginTop="0">
+        <Label text="&#xe971; وحيد" row="0" col="0" class="h2 font-icomoon" horizontalAlignment="center"></Label>
+        <Label text="&#xe972; زوجين" row="0" col="1" class="h2 font-icomoon" horizontalAlignment="center"></Label>
+    </GridLayout>
+    <GridLayout rows="auto" columns="*" margin="0" marginTop="0">
+        <GridLayout columns="*,*" >
+            <StackLayout columns="auto" padding="8" class="cardStyleSingle" col="0">  
+                    <label text="بدون أولاد" textWrap="true" class="size14" row="0" ></label>
+                    <label text="{{item.seuleNonEnfant | currencyEuro}}" textWrap="true" class="size20" row="1" ></label>
+            </StackLayout>
+            <StackLayout columns="auto" padding="8" class="cardStyleCouple" col="1">  
+                    <label text="بدون أولاد" textWrap="true" class="size14" row="0" ></label>
+                    <label text="{{item.coupleNonEnfant | currencyEuro}}" textWrap="true" class="size20" row="1" ></label>
+            </StackLayout>
+        </GridLayout>
+    </GridLayout>
+
+    <GridLayout rows="auto" columns="*" margin="0" marginTop="0">
+        <GridLayout columns="*,*" >
+            <StackLayout columns="auto" padding="8" class="cardStyleSingle" col="0">  
+                    <label text="مع ولد واحد" textWrap="true" class="size14" row="0" ></label>
+                    <label text="{{item.seuleUnEnfant | currencyEuro}}" textWrap="true" class="size20" row="1" ></label>
+            </StackLayout>
+            <StackLayout columns="auto" padding="8" class="cardStyleCouple" col="1">  
+                    <label text="مع ولد واحد" textWrap="true" class="size14" row="0" ></label>
+                    <label text="{{item.coupleUnEnfant | currencyEuro}}" textWrap="true" class="size20" row="1" ></label>
+            </StackLayout>
+        </GridLayout>
+    </GridLayout>
+    <GridLayout rows="auto" columns="*" margin="0" marginTop="0">
+        <GridLayout columns="*,*" >
+            <StackLayout columns="auto" padding="8" class="cardStyleSingle" col="0">  
+                    <label text="مع ولدين" textWrap="true" class="size14" row="0" ></label>
+                    <label text="{{item.seuleDeuxEnfant | currencyEuro}}" textWrap="true" class="size20" row="1" ></label>
+            </StackLayout>
+            <StackLayout columns="auto" padding="8" class="cardStyleCouple" col="1">  
+                    <label text="مع ولدين" textWrap="true" class="size14" row="0" ></label>
+                    <label text="{{item.coupleDeuxEnfant | currencyEuro}}" textWrap="true" class="size20" row="1" ></label>
+            </StackLayout>
+        </GridLayout>
+    </GridLayout>
+    <GridLayout rows="auto" columns="*" margin="0" marginTop="0">
+        <GridLayout columns="*,*" >
+            <StackLayout columns="auto" padding="8" class="cardStyleSingle" col="0">  
+                    <label text="عن كل ولد إضافي" textWrap="true" class="size14" row="0" ></label>
+                    <label text="{{item.seuleParEnfantSupp | currencyEuro}}" textWrap="true" class="size20" row="1" ></label>
+            </StackLayout>
+            <StackLayout columns="auto" padding="8" class="cardStyleCouple" col="1">  
+                    <label text="عن كل ولد إضافي" textWrap="true" class="size14" row="0" ></label>
+                    <label text="{{item.coupleParEnfantSupp | currencyEuro}}" textWrap="true" class="size20" row="1" ></label>
+            </StackLayout>
+        </GridLayout>
+    </GridLayout>
+    <GridLayout rows="auto" columns="*" margin="0" marginTop="0">
+        <Label text="&#xe901; مستفيد من مساعدة السكن" row="0" col="0" class="h3 font-icomoon" horizontalAlignment="center"></Label>
+    </GridLayout>
+
+    <GridLayout rows="auto" columns="*" margin="0" marginTop="0">
+        <GridLayout columns="*,*,*" >
+            <StackLayout columns="auto" padding="8" class="cardStyleHome" col="2">  
+                    <label text="شخص واحد" textWrap="true" class="size14" row="0" ></label>
+                    <label text="{{item.forfaitLogUnePer | currencyEuro}}" textWrap="true" class="size18" row="1" ></label>
+            </StackLayout>
+            <StackLayout columns="auto" padding="8" class="cardStyleHome" col="1">  
+                    <label text="شخصين" textWrap="true" class="size14" row="0" ></label>
+                    <label text="{{item.forfaitLogDeuxPer | currencyEuro}}" textWrap="true" class="size18" row="1" ></label>
+            </StackLayout>
+            <StackLayout columns="auto" padding="8" class="cardStyleHome" col="0">  
+                    <label text="ثلاثة أشخاص" textWrap="true" class="size14" row="0" ></label>
+                    <label text="{{item.forfaitLogTroisPer | currencyEuro}}" textWrap="true" class="size18" row="1" ></label>
+            </StackLayout>
+        </GridLayout>
+    </GridLayout>
+    </StackLayout>
+    </ScrollView>
+</StackLayout>                      
+</TabView>
+
+
+
