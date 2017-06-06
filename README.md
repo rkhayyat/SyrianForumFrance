@@ -1,4 +1,4 @@
-﻿﻿<p align="center">
+<p align="center">
   <img src="https://github.com/rkhayyat/SyrianForumFrance/blob/master/screenshot/logo.png" width="100"/>
 </p>
 # Eid Wa7da (إيد وحدة):
