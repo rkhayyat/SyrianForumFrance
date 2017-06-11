@@ -73,6 +73,8 @@ selectedIndexChanged(picker) {
 calcRsa(){
   let montantForfaitaire:number = this.cafService.calcRsa(this.rsaObj[0], this.isMarried, this.childrenNum, this.isHouse);
   let bonification :number;
+  let etap1:number;
+  let etap2:number;
 
 if (this.revenus < 570){
     bonification = 0;
@@ -87,8 +89,11 @@ else if ((this.revenus > 796) ){
     bonification = 67;
 }
 
+etap1 = (montantForfaitaire + bonification + 0.62*this.revenus) - this.revenus;
+etap2 = montantForfaitaire - this.revenus;
+etap2 = (etap2 <0 ?0:etap2);
 
-  let primeActivite:number = (this.revenus <= 0? 0:(montantForfaitaire + bonification + 0.62*this.revenus) - this.revenus) ;
+  let primeActivite:number = (this.revenus <= 0? 0:etap1 - etap2) ;
   this.rsaValue = (primeActivite < 15?0:primeActivite);
 
 }
