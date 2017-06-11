@@ -14,6 +14,7 @@ import { CatListModule } from "./archive/categories/cat-list.module";
 import { MainConvModule } from "./conversion/main-conv/main-conv.module";
 import { BruteNetModule } from "./conversion/brute-net/brute-net.module";
 import { CafModule } from "./conversion/caf/caf.module";
+import { PrimeActiviteModule } from "./conversion/prime-activite/prime-activite.module";
 import { ListModule } from "./archive/list/list.module";
 import { ListDetailModule } from "./archive/list-detail/list-detail.module";
 import { SearchModalComponent } from "./archive/categories/search-modal.component";
@@ -48,6 +49,7 @@ import {TNSFontIconModule, TNSFontIconService, TNSFontIconPipe, TNSFontIconPureP
     MainConvModule,
     BruteNetModule,
     CafModule,
+    PrimeActiviteModule,
     PhraseCardsModule,
     PhraseListDetailModule,
     PhraseCategoryListModule,
@@ -62,13 +64,4 @@ import {TNSFontIconModule, TNSFontIconService, TNSFontIconPipe, TNSFontIconPureP
   entryComponents:[SearchModalComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
-
-
-
-
-
-  
-  
-  
-  
+export class AppModule { } 

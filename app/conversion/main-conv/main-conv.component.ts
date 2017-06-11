@@ -26,6 +26,9 @@ back(){
 goToCaf(){
      this.router.navigate(["/caf"]);   
 }
+goToPrimeActivite(){
+     this.router.navigate(["/prime-activite"]);   
+}
 goToBruteNet(){
     this.router.navigate(["/brute-net"]);
 }

@@ -1,0 +1,56 @@
+<ActionBar title="علاوة النشاط" icon="" class="action-bar">
+<NavigationButton text="عودة" android.systemIcon="ic_menu_back" (tap)="back()"></NavigationButton>
+<ActionItem (tap)="goHome()"
+            ios.systemIcon="9" ios.position="left"
+            android.systemIcon="ic_menu_home" android.position="actionBar">
+</ActionItem>
+</ActionBar>
+
+
+        <AbsoluteLayout>
+            <ScrollView class="sv">
+                <StackLayout class="card"  *ngFor="let item of caf$ | async | slice:0:1">
+                    <GridLayout rows="auto" columns="*,*" margin="10" marginTop="10" horizontalAlignment="center">
+                        <Label text="متزوج"  col="1" class="h3 font-icomoon" ></Label>
+                        <Switch [checked]="isMarried" [(ngModel)]="isMarried" col="0"></Switch>
+                    </GridLayout>
+
+                    <StackLayout class="hr-light" ></StackLayout>
+                    <StackLayout class="hr-light" ></StackLayout>
+                    <GridLayout rows="auto" columns="*,auto" margin="10" marginTop="10" horizontalAlignment="center">
+                        <Label text="مستفيد من مساعدة السكن"  col="1" class="h3 font-icomoon" ></Label>
+                        <Switch [checked]="isHouse" [(ngModel)]="isHouse" col="0"></Switch>
+                    </GridLayout>
+                    <StackLayout class="hr-light" ></StackLayout>
+                    <StackLayout class="hr-light" ></StackLayout>
+                    <StackLayout  margin="10" marginTop="10" horizontalAlignment="center" verticalAlignment="middle">
+                        <Label text="عدد الأولاد"  class="h3 font-icomoon" ></Label>
+                        <ListPicker #picker  
+                                   [items]="ageList" 
+                                   [selectedIndex]="0"
+                                   (selectedIndexChange)="selectedIndexChanged(picker)">
+                        </ListPicker>
+                    </StackLayout>
+                    <StackLayout class="hr-light" ></StackLayout>
+                    <StackLayout class="hr-light" ></StackLayout>
+                    <GridLayout rows="auto" columns="*,*" margin="10" marginTop="10" horizontalAlignment="center">
+                        <Label text="الدخل الشهري"  col="1" class="h3 font-icomoon" ></Label>
+                        <TextField  keyboardType="number" 
+                                    [(ngModel)]="revenus"
+                                    row="0" col="0" 
+                                    class="text-input" 
+                                    returnKeyType="done" 
+                                    >
+                        </TextField>
+                    </GridLayout>
+                    <StackLayout class="hr-dark" ></StackLayout>
+                    <StackLayout class="hr-dark" ></StackLayout>
+                    <GridLayout rows="auto" columns="*" margin="10" marginTop="10" horizontalAlignment="center">
+                        <Label text="{{rsaValue | currencyEuro }}"   textWrap="true" class="h2" ></Label>
+                    </GridLayout>
+                    </StackLayout>
+            </ScrollView>
+            <StackLayout class="float-btn-container">
+                <float-btn (tap)="calcRsa()" text="&#xf1ec;"></float-btn>
+            </StackLayout>
+        </AbsoluteLayout>
