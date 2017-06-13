@@ -32,6 +32,7 @@ export class PrimeActiviteComponent implements OnInit {
     UID: string ;
     selectedIndex:number;
     revenus :number=0;
+    anotherAide:number=0;
     public caf: CAF;
     public caf$: Observable<any>;
     public isAnonymous: boolean;
@@ -93,7 +94,7 @@ etap1 = (montantForfaitaire + bonification + 0.62*this.revenus) - this.revenus;
 etap2 = montantForfaitaire - this.revenus;
 etap2 = (etap2 <0 ?0:etap2);
 
-  let primeActivite:number = (this.revenus <= 0? 0:etap1 - etap2) ;
+  let primeActivite:number = (this.revenus <= 0? 0:etap1 - etap2)- this.anotherAide ;
   this.rsaValue = (primeActivite < 15?0:primeActivite);
 
 }

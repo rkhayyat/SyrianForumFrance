@@ -23,30 +23,44 @@
                     </GridLayout>
                     <StackLayout class="hr-light" ></StackLayout>
                     <StackLayout class="hr-light" ></StackLayout>
-                    <StackLayout  margin="10" marginTop="10" horizontalAlignment="center" verticalAlignment="middle">
-                        <Label text="عدد الأولاد"  class="h3 font-icomoon" ></Label>
-                        <ListPicker #picker  
-                                   [items]="ageList" 
-                                   [selectedIndex]="0"
-                                   (selectedIndexChange)="selectedIndexChanged(picker)">
-                        </ListPicker>
-                    </StackLayout>
-                    <StackLayout class="hr-light" ></StackLayout>
-                    <StackLayout class="hr-light" ></StackLayout>
-                    <GridLayout rows="auto" columns="*,*" margin="10" marginTop="10" horizontalAlignment="center">
-                        <Label text="الدخل الشهري"  col="1" class="h3 font-icomoon" ></Label>
+                   
+                    <GridLayout rows="auto" columns="*,*,*"  rows="*,*" margin="10" marginTop="10" horizontalAlignment="center">
+                        
+                    <Label text="الدخل الشهري"  row="0" col="2" class="h3" ></Label>
                         <TextField  keyboardType="number" 
                                     [(ngModel)]="revenus"
-                                    row="0" col="0" 
+                                    row="0" col="1" 
                                     class="text-input" 
-                                    returnKeyType="done" 
+                                    returnKeyType="done"
+                                     verticalAlignment="top" 
                                     >
                         </TextField>
+
+                        <Label text="مساعدات أخرى"  row="1" col="2"  class="h3" ></Label>
+                        <TextField  keyboardType="number" 
+                                    [(ngModel)]="anotherAide"
+                                    col="1" 
+                                    row="1"
+                                    class="text-input" 
+                                    returnKeyType="done" 
+                                    verticalAlignment="top"
+                                    >
+                        </TextField>
+
+                        <StackLayout  margin="10" row="0" col="0" rowSpan="2" marginTop="10" horizontalAlignment="center" verticalAlignment="middle">
+                            <Label text="عدد الأولاد"  class="h3 font-icomoon" ></Label>
+                            <ListPicker #picker  
+                                    [items]="ageList" 
+                                    [selectedIndex]="0"
+                                    (selectedIndexChange)="selectedIndexChanged(picker)">
+                            </ListPicker>
+                        </StackLayout>
                     </GridLayout>
                     <StackLayout class="hr-dark" ></StackLayout>
                     <StackLayout class="hr-dark" ></StackLayout>
-                    <GridLayout rows="auto" columns="*" margin="10" marginTop="10" horizontalAlignment="center">
-                        <Label text="{{rsaValue | currencyEuro }}"   textWrap="true" class="h2" ></Label>
+                    <GridLayout rows="auto" columns="*,*" margin="10" marginTop="10" horizontalAlignment="center">
+                        <Label text="Prime Activité"  col="1" class="h3" ></Label>
+                        <Label text="{{rsaValue | currencyEuro }}"  col="0" textWrap="true" class="h2" ></Label>
                     </GridLayout>
                     </StackLayout>
             </ScrollView>
