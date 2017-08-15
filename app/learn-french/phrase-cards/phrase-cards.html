@@ -5,17 +5,20 @@
             android.systemIcon="ic_menu_home" android.position="actionBar">
         </ActionItem>
 </ActionBar>
-<StackLayout>
-    <AbsoluteLayout horizontalAlignment="center" paddingTop="30" #absolutelayout>
-        <GridLayout width="100%" style="z-index:1" columns="*,*" horizontalAlignment="center">
-            <!--<Label #no col="0" verticalAlignment="center" text="no, thanks!" class="no"></Label>
-            <Label #yes col="1" text="yes, please!" class="yes"></Label>-->
-        </GridLayout>
-    </AbsoluteLayout>
+    <StackLayout>
+    <StackLayout>
+        <SwipeCard  height="75%"
+                    width="100%" 
+                    [items]="stackCards"
+                    (swipeEvent)="swipeEvent($event)"
+                    cardHeight="50" 
+                    cardWidth="80"
+                    cardBorderRadius="15"
+                    cardBorderWidth="1">
+        </SwipeCard> 
+        </StackLayout>
     <StackLayout>
         <Label  class="gold card font-awesome" textWrap="true" [text]="textSpeech"></Label>
-        <!--<Label *ngIf="textSpeech!=='' && isCorrect" class="gold card h2 font-awesome"  horizontalAlignment="center" text="أحسنت &#xf164;"></Label>
-        <Label *ngIf="textSpeech!=='' && !isCorrect" class="gold card h2 font-awesome"  horizontalAlignment="center" text="حاول من جديد &#xf165;"></Label>-->
         <GridLayout columns="auto,auto,auto" horizontalAlignment="center" paddingBottom="10">
             <Button #swipeleft class="btnFr fa font-awesome btn-active" col="0" [text]="'&#xf2a2;'" (tap)="readText()" ></Button>
             <Button class="btnsmFr fa-small font-awesome" col="1" [text]="'&#xf192;' "></Button>

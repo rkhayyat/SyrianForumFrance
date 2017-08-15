@@ -28,6 +28,7 @@
     "nativescript-plugin-firebase": "^3.11.4",
     "nativescript-social-share": "^1.3.2",
     "nativescript-speech-recognition": "^1.2.0",
+    "nativescript-swipe-card": "^1.0.5",
     "nativescript-texttospeech": "^1.3.2",
     "nativescript-theme-core": "~1.0.4",
     "nativescript-toast": "^1.4.5",
