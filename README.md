@@ -65,6 +65,7 @@ The mobile application is developped in [Nativescript](https://www.nativescript.
 The application is based on [EddyVerbruggen/nativescript-plugin-firebase](https://github.com/eddyverbruggen/nativescript-plugin-firebase) and inspired by the application sample presented by [Jen Looper](https://www.nativescript.org/blog/merry-and-bright-create-a-mobile-app-with-firebase-angular-2-and-nativescript).
 
 Other plugins used in this project:
+- <b>nativescript-swipe-card</b>(This plugin was built by the developer of this application)
 - <b>nativescript-appversion</b>
 - <b>nativescript-social-share</b>
 - <b>nativescript-speech-recognition</b>
