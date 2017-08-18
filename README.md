@@ -53,7 +53,7 @@ At the moment of writing this readme, there are three sections in this applicati
 
 <p align="center">
   <img src="https://github.com/rkhayyat/SyrianForumFrance/blob/master/screenshot/Screenshot_20170530-160851.png" width="300"/>
-  <img src="https://github.com/rkhayyat/SyrianForumFrance/blob/master/screenshot/Screenshot_20170530-160859.png" width="300"/>
+  <img src="https://github.com/rkhayyat/nativescript-swipe-card/blob/master/screenshot/swipeCardAngular.gif" width="300"/>
 </p>
 <p align="center">The views of the dual phrases presented in flash cards.</p>
 
